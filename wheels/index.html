@@ -41,7 +41,6 @@
           <tr>
             <th>명륜명</th>
             <th>등급</th>
-            <th>돌파</th>
             <th>고유</th>
             <th>효과 요약</th>
           </tr>
@@ -51,6 +50,9 @@
     </div>
   </main>
 
+  <footer>
+    마지막 갱신: 2026년 5월 21일
+  </footer>
   <script src="../data/wheels.js"></script>
   <script src="../js/main.js"></script>
   <script>
@@ -64,9 +66,6 @@
       const exclusiveCell = w.exclusive
         ? `<span class="tag tag-exclusive">${w.exclusive}</span>`
         : '<span style="color:var(--text-muted)">—</span>';
-      const btCell = w.breakthrough
-        ? `<span class="enlighten">${w.breakthrough}</span>`
-        : '<span style="color:var(--text-muted)">—</span>';
 
       tr.innerHTML = `
         <td>
@@ -74,7 +73,6 @@
           <div class="name-en">${w.nameEn}</div>
         </td>
         <td>${gradeTag}</td>
-        <td>${btCell}</td>
         <td>${exclusiveCell}</td>
         <td><div class="effect-text">${w.effect}</div></td>
       `;

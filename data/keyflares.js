@@ -2,17 +2,17 @@ const KEYFLARES = [
   {
     name: '머릿속의 목소리',
     nameEn: 'Voices in Your Head',
-    effect: '모든 적 Weakness 1턴 + Vulnerable 1턴, STR 8 Steal',
+    effect: '모든 적 약화 1턴 + 취약 1턴, 강화 8 탈취',
   },
   {
     name: '쥐의 지혜',
     nameEn: "A Mouse's Wisdom",
-    effect: 'Arithmetica +3',
+    effect: '산출력 +3',
   },
   {
     name: '작은 소원',
     nameEn: 'Tiny Wish',
-    effect: '선택 각성체 Aliemus +35',
+    effect: '선택 각성체 광기 +35',
   },
   {
     name: '순백의 첫 만남',
@@ -27,7 +27,7 @@ const KEYFLARES = [
   {
     name: '영원한 집착',
     nameEn: '—',
-    effect: 'STR +25 획득. 현재 영구 STR의 25%만큼 임시 STR 추가 획득',
+    effect: '강화 +25 획득. 현재 영구 강화의 25%만큼 임시 강화 추가 획득',
   },
   {
     name: '불평등한 교환',
@@ -37,12 +37,12 @@ const KEYFLARES = [
   {
     name: '마지막 서약',
     nameEn: 'The Final Vow',
-    effect: '임시 Crit Rate +25%, 임시 STR +15. 보스전+이번 턴 카드 미사용 시 Death Resist 1회 시도, 성공 시 실드 +298. 전투당 1회',
+    effect: '임시 치명타 확률 +25%, 임시 강화 +15. 보스전+이번 턴 카드 미사용 시 생존의지 1회 시도, 성공 시 실드 +298. 전투당 1회',
   },
   {
     name: '부패의 연회',
     nameEn: 'Feast of Decay',
-    effect: 'Counter +122, 모든 적 임시 STR -23. Ultra Round 시 Counter만큼 전체 딜',
+    effect: '반격 +122, 모든 적 임시 강화 -23. 초차원 라운드 시 반격만큼 전체 피해',
   },
   {
     name: '회귀의 문을 넘어',
@@ -52,36 +52,36 @@ const KEYFLARES = [
   {
     name: '바다의 의식',
     nameEn: 'Festival of Tides',
-    effect: '카드 2장 드로우 + Arithmetica +2, 팀 전체 Aliemus -5. 怒涛 시 독 162 전체. 보스전 3배',
+    effect: '카드 2장 드로우 + 산출력 +2, 팀 전체 광기 -5. 격랑 시 독 162 전체. 보스전 3배',
   },
   {
     name: '별들의 가호',
     nameEn: 'Blessing of the Stars',
-    effect: 'Slumber: 실드 +45 + Stellar Protection 1스택(최대 5, 전투 간 유지). Arouse: 팀 Aliemus +8, 스택 소모→스택당 Arithmetica +1, Aequor면 임시 촉수 소환',
+    effect: '잠듦: 실드 +45 + 별의 수호 1스택(최대 5, 전투 간 유지). 각성: 팀 광기 +8, 스택 소모→스택당 산출력 +1, 심해 시 임시 촉수 소환',
   },
   {
     name: '주점의 문',
     nameEn: "Tavern's Opening",
-    effect: "Leah's Coin 생성 (Arithmetica +2, 드로우 2장, Exhaust, Retain)",
+    effect: "레아의 동전 생성 (산출력 +2, 드로우 2장, 소모, 보존)",
   },
   {
     name: '굶주린 결의',
     nameEn: 'Voracious Resolve',
-    effect: '팀 기본 Skill 카드 3개 중 1개 선택, Exhaust+코스트 -1. Caro 포함 시 Gobble Up! 선택 가능',
+    effect: '팀 기본 스킬 카드 3개 중 1개 선택, 소모+코스트 -1. 혈육 포함 시 폭식! 선택 가능',
   },
   {
     name: '안개 경계에서 온',
     nameEn: 'From the Mist Realm',
-    effect: 'Strike 카드 2장 드로우. Mouchette 팀에 있으면 코스트 -1',
+    effect: '공격 카드 2장 드로우. 모샤 팀에 있으면 코스트 -1',
   },
   {
     name: '세말 불꽃놀이',
     nameEn: 'Year-End Sparks',
-    effect: '임시 Crit Rate +15%, Arithmetica +1. 전투 첫 발동 시 전체 적 고정피해 607',
+    effect: '임시 치명타 확률 +15%, 산출력 +1. 전투 첫 발동 시 전체 적 고정 피해 607',
   },
   {
     name: '익사한 순수',
     nameEn: 'Drowned Innocence',
-    effect: '선택 각성체 Aliemus +15, 나머지 +5. Vortice 있으면 즉시 涡！流！弹！ 추격 발동',
+    effect: '선택 각성체 광기 +15, 나머지 +5. 모스 팀에 있으면 즉시 소용돌이 추격 발동',
   },
 ];

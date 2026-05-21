@@ -33,11 +33,6 @@
         <button class="filter-btn" data-value="caro">혈육</button>
         <button class="filter-btn" data-value="ultra">초차원</button>
       </div>
-      <div class="filter-group owned-group">
-        <button class="filter-btn active" data-value="all">전체</button>
-        <button class="filter-btn" data-value="true">보유</button>
-        <button class="filter-btn" data-value="false">미보유</button>
-      </div>
       <span class="result-count" id="result-count"></span>
     </div>
 
@@ -47,8 +42,6 @@
           <tr>
             <th>각성체명</th>
             <th>팩션</th>
-            <th>각성 레벨</th>
-            <th>보유</th>
           </tr>
         </thead>
         <tbody id="char-tbody"></tbody>
@@ -56,6 +49,9 @@
     </div>
   </main>
 
+  <footer>
+    마지막 갱신: 2026년 5월 21일
+  </footer>
   <script src="../data/characters.js"></script>
   <script src="../js/main.js"></script>
   <script>
@@ -64,13 +60,9 @@
     CHARACTERS.forEach(c => {
       const tr = document.createElement('tr');
       tr.dataset.faction = c.faction;
-      tr.dataset.owned   = String(c.owned);
 
       const factionLabel = { chaos: '카오스', aequor: '심해', caro: '혈육', ultra: '초차원' }[c.faction];
       const factionTag   = `<span class="tag tag-${c.faction}">${factionLabel}</span>`;
-      const ownedTag     = c.owned
-        ? '<span class="tag tag-owned">보유</span>'
-        : '<span class="tag tag-unowned">미보유</span>';
 
       tr.innerHTML = `
         <td>
@@ -78,15 +70,12 @@
           <div class="name-en">${c.nameEn}</div>
         </td>
         <td>${factionTag}</td>
-        <td><span class="enlighten">${c.enlighten}</span></td>
-        <td>${ownedTag}</td>
       `;
       tbody.appendChild(tr);
     });
 
     setupSearch('search-input', 'char-tbody');
     setupFilterBtns('faction-group', 'char-tbody');
-    setupFilterBtns('owned-group', 'char-tbody');
     applyFilters('char-tbody');
   </script>
 </body>
