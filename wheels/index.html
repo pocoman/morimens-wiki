@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>명륜 — 망각전야 아카이브</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="site-title">망각전야 아카이브</a>
+      <nav>
+        <a href="../index.html">홈</a>
+        <a href="../characters/index.html">각성체</a>
+        <a href="../wheels/index.html" class="active">명륜</a>
+        <a href="../keyflares/index.html">은열쇠</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>명륜 <span>Wheel of Destiny</span></h1>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="search-input" placeholder="이름 / 효과 검색...">
+      <div class="filter-group grade-group">
+        <button class="filter-btn active" data-value="all">전체</button>
+        <button class="filter-btn" data-value="SSR">SSR</button>
+        <button class="filter-btn" data-value="SR">SR</button>
+        <button class="filter-btn" data-value="R">R</button>
+      </div>
+      <span class="result-count" id="result-count"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>명륜명</th>
+            <th>등급</th>
+            <th>돌파</th>
+            <th>고유</th>
+            <th>효과 요약</th>
+          </tr>
+        </thead>
+        <tbody id="wheel-tbody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="../data/wheels.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const tbody = document.getElementById('wheel-tbody');
+
+    WHEELS.forEach(w => {
+      const tr = document.createElement('tr');
+      tr.dataset.grade = w.grade;
+
+      const gradeTag = `<span class="tag tag-${w.grade.toLowerCase()}">${w.grade}</span>`;
+      const exclusiveCell = w.exclusive
+        ? `<span class="tag tag-exclusive">${w.exclusive}</span>`
+        : '<span style="color:var(--text-muted)">—</span>';
+      const btCell = w.breakthrough
+        ? `<span class="enlighten">${w.breakthrough}</span>`
+        : '<span style="color:var(--text-muted)">—</span>';
+
+      tr.innerHTML = `
+        <td>
+          <div class="name-ko">${w.name}</div>
+          <div class="name-en">${w.nameEn}</div>
+        </td>
+        <td>${gradeTag}</td>
+        <td>${btCell}</td>
+        <td>${exclusiveCell}</td>
+        <td><div class="effect-text">${w.effect}</div></td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    setupSearch('search-input', 'wheel-tbody');
+    setupFilterBtns('grade-group', 'wheel-tbody');
+    applyFilters('wheel-tbody');
+  </script>
+</body>
+</html>

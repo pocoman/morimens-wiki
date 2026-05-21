@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>은열쇠 — 망각전야 아카이브</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="site-title">망각전야 아카이브</a>
+      <nav>
+        <a href="../index.html">홈</a>
+        <a href="../characters/index.html">각성체</a>
+        <a href="../wheels/index.html">명륜</a>
+        <a href="../keyflares/index.html" class="active">은열쇠</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>은열쇠 <span>Keyflare / Posse</span></h1>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="search-input" placeholder="이름 / 효과 검색...">
+      <span class="result-count" id="result-count"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>은열쇠명</th>
+            <th>효과</th>
+          </tr>
+        </thead>
+        <tbody id="kf-tbody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="../data/keyflares.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const tbody = document.getElementById('kf-tbody');
+
+    KEYFLARES.forEach(k => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <div class="name-ko">${k.name}</div>
+          <div class="name-en">${k.nameEn}</div>
+        </td>
+        <td><div class="effect-text">${k.effect}</div></td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    setupSearch('search-input', 'kf-tbody');
+    applyFilters('kf-tbody');
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>각성체 — 망각전야 아카이브</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="site-title">망각전야 아카이브</a>
+      <nav>
+        <a href="../index.html">홈</a>
+        <a href="../characters/index.html" class="active">각성체</a>
+        <a href="../wheels/index.html">명륜</a>
+        <a href="../keyflares/index.html">은열쇠</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>각성체 <span>Awakener</span></h1>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="search-input" placeholder="이름 검색...">
+      <div class="filter-group faction-group">
+        <button class="filter-btn active" data-value="all">전체</button>
+        <button class="filter-btn" data-value="chaos">카오스</button>
+        <button class="filter-btn" data-value="aequor">심해</button>
+        <button class="filter-btn" data-value="caro">혈육</button>
+        <button class="filter-btn" data-value="ultra">초차원</button>
+      </div>
+      <div class="filter-group owned-group">
+        <button class="filter-btn active" data-value="all">전체</button>
+        <button class="filter-btn" data-value="true">보유</button>
+        <button class="filter-btn" data-value="false">미보유</button>
+      </div>
+      <span class="result-count" id="result-count"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>각성체명</th>
+            <th>팩션</th>
+            <th>각성 레벨</th>
+            <th>보유</th>
+          </tr>
+        </thead>
+        <tbody id="char-tbody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="../data/characters.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const tbody = document.getElementById('char-tbody');
+
+    CHARACTERS.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.dataset.faction = c.faction;
+      tr.dataset.owned   = String(c.owned);
+
+      const factionLabel = { chaos: '카오스', aequor: '심해', caro: '혈육', ultra: '초차원' }[c.faction];
+      const factionTag   = `<span class="tag tag-${c.faction}">${factionLabel}</span>`;
+      const ownedTag     = c.owned
+        ? '<span class="tag tag-owned">보유</span>'
+        : '<span class="tag tag-unowned">미보유</span>';
+
+      tr.innerHTML = `
+        <td>
+          <div class="name-ko">${c.name}</div>
+          <div class="name-en">${c.nameEn}</div>
+        </td>
+        <td>${factionTag}</td>
+        <td><span class="enlighten">${c.enlighten}</span></td>
+        <td>${ownedTag}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    setupSearch('search-input', 'char-tbody');
+    setupFilterBtns('faction-group', 'char-tbody');
+    setupFilterBtns('owned-group', 'char-tbody');
+    applyFilters('char-tbody');
+  </script>
+</body>
+</html>
