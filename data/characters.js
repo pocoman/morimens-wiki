@@ -20,7 +20,7 @@ const CHARACTERS = [
   { name: '모샤',         nameEn: 'Mouchette',        faction: 'chaos',  detail: null },
 
   // 심해 (Aequor)
-  { name: '모스',         nameEn: 'Vortice',          faction: 'aequor', detail: null },
+  { name: 'Mosk',         nameEn: 'Vortice',          faction: 'aequor', detail: null },
   { name: '머피',         nameEn: 'Murphy',           faction: 'aequor', detail: null },
   { name: '미리암',       nameEn: 'Miryam',           faction: 'aequor', detail: null },
   { name: '오레타',       nameEn: 'Aurita',           faction: 'aequor', detail: null },

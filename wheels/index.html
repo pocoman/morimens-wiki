@@ -51,13 +51,79 @@
     </div>
   </main>
 
+  <div class="panel-overlay" id="panel-overlay"></div>
+  <aside class="detail-panel" id="detail-panel">
+    <button class="panel-close" id="panel-close">✕</button>
+    <div id="panel-content"></div>
+  </aside>
+
   <footer>
     마지막 갱신: 2026년 5월 21일
   </footer>
   <script src="../data/wheels.js"></script>
   <script src="../js/main.js"></script>
   <script>
-    const tbody = document.getElementById('wheel-tbody');
+    const tbody  = document.getElementById('wheel-tbody');
+    const overlay = document.getElementById('panel-overlay');
+    const panel   = document.getElementById('detail-panel');
+    const content = document.getElementById('panel-content');
+
+    function closePanel() {
+      panel.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+
+    function openPanel(w) {
+      const d = w.detail;
+      const gradeTag = `<span class="tag tag-${w.grade.toLowerCase()}">${w.grade}</span>`;
+      const exclusiveTag = w.exclusive
+        ? `<span class="tag tag-exclusive">${w.exclusive}</span>` : '';
+
+      let html = `
+        <div class="panel-title">${w.name}</div>
+        <div class="panel-title-en">${w.nameEn}</div>
+        <div class="panel-tags">${gradeTag}${exclusiveTag}</div>
+      `;
+
+      html += `
+        <div class="panel-section">
+          <div class="panel-section-title">메인 스탯</div>
+          <div class="main-stat-value">${d.mainStat}</div>
+        </div>
+      `;
+
+      if (d.subEffects && d.subEffects.length) {
+        html += `<div class="panel-section"><div class="panel-section-title">서브 효과</div>`;
+        d.subEffects.forEach(eff => {
+          const vals = eff.values.map((v, i) =>
+            `<span class="subeffect-val"><span class="val-label">E${i}</span>${v}</span>`
+          ).join('');
+          html += `
+            <div class="subeffect-item">
+              <div class="subeffect-desc">${eff.desc}</div>
+              <div class="subeffect-values">${vals}</div>
+            </div>
+          `;
+        });
+        html += `</div>`;
+      }
+
+      if (d.fixedEffects && d.fixedEffects.length) {
+        html += `<div class="panel-section"><div class="panel-section-title">고정 효과</div>`;
+        d.fixedEffects.forEach(eff => {
+          html += `<div class="fixed-effect-item">${eff}</div>`;
+        });
+        html += `</div>`;
+      }
+
+      content.innerHTML = html;
+      panel.classList.add('open');
+      overlay.classList.add('open');
+    }
+
+    document.getElementById('panel-close').addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 
     WHEELS.forEach(w => {
       const tr = document.createElement('tr');
@@ -77,6 +143,12 @@
         <td>${exclusiveCell}</td>
         <td><div class="effect-text">${w.effect}</div></td>
       `;
+
+      if (w.detail) {
+        tr.classList.add('tr-clickable');
+        tr.addEventListener('click', () => openPanel(w));
+      }
+
       tbody.appendChild(tr);
     });
 

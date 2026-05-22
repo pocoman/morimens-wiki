@@ -41,6 +41,7 @@
       <table>
         <thead>
           <tr>
+            <th class="icon-cell"></th>
             <th>각성체명</th>
             <th>팩션</th>
           </tr>
@@ -58,14 +59,24 @@
   <script>
     const tbody = document.getElementById('char-tbody');
 
+    function toIconFilename(nameEn) {
+      return nameEn.toLowerCase().replace(/[:']/g, '').replace(/\s+/g, '-');
+    }
+
     CHARACTERS.forEach(c => {
       const tr = document.createElement('tr');
       tr.dataset.faction = c.faction;
 
       const factionLabel = { chaos: '카오스', aequor: '심해', caro: '혈육', ultra: '초차원' }[c.faction];
       const factionTag   = `<span class="tag tag-${c.faction}">${factionLabel}</span>`;
+      const iconFile     = toIconFilename(c.nameEn);
 
       tr.innerHTML = `
+        <td class="icon-cell">
+          <img src="../assets/characters/${iconFile}.png"
+               class="char-icon" alt="${c.name}"
+               onerror="this.outerHTML='<div class=\\'char-icon-placeholder\\'></div>'">
+        </td>
         <td>
           <div class="name-ko">${c.name}</div>
           <div class="name-en">${c.nameEn}</div>
