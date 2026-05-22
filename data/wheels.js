@@ -1075,6 +1075,111 @@ const WHEELS = [
     },
     breakthroughEffects: null,
   },
+  {
+    grade: 'SSR',
+    name: '다시 만날 거야',
+    nameEn: 'You and Me Will Meet',
+    exclusive: null,
+    effect: '촉수 자세 변경·핏빛 용광로·소멸 사용 시 장착자 명령 카드 1장 드로우 (각 3턴 쿨다운). 탐험 완료 후 동조율 획득 +4~10%',
+    detail: {
+      mainStat: '영역 숙달 36 (E4~E15 강화 시 +3씩 증가)',
+      subEffects: [
+        { desc: '탐험 완료 후 동조율 획득 증가', values: ['4%', '6%', '8%', '10%'] },
+      ],
+      fixedEffects: ['촉수 자세 변경·핏빛 용광로·소멸 사용 시 장착자 명령 카드 1장 드로우 (각 3턴 쿨다운)', '탐험 완료 후 모든 각성체 동조율 획득 증가'],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SSR',
+    name: '카운트 다운 순간',
+    nameEn: 'Countdown Moment',
+    exclusive: null,
+    effect: '탐험 시작 시 카운트다운:5 카드 덱 추가. 카운트다운:0 발동 시 카드 3장 드로우+산출력 3 획득+재순환 확률 +40~100%',
+    detail: {
+      mainStat: '은열쇠 충전량 21.6 (E4~E15 강화 시 +1.8씩 증가)',
+      subEffects: [
+        { desc: '카운트다운:0 발동 시 카운트다운:5 재순환 확률', values: ['40%', '60%', '80%', '100%'] },
+      ],
+      fixedEffects: [
+        '팀 고유 효과',
+        '탐험 시작 시 카운트다운:5 카드 1장 덱에 추가 (소모)',
+        '카운트다운:5 사용 시 카드 1장 드로우, 다음 카운트다운 카드를 버림 더미에 삽입 (소모)',
+        '카운트다운:0 발동 시 카드 3장 드로우 및 산출력 3 획득 (보존/소모)',
+      ],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SSR',
+    name: '상자 속의 어린이의 재미',
+    nameEn: 'Fun in Box',
+    exclusive: null,
+    effect: '융흔 각인 또는 회색빛 유적지 할인 상품 첫 구매 시 검은 인장 비용 0 확률 +70~100% (탐험당 1회)',
+    detail: {
+      mainStat: '생존의지 50.4% (E4~E15 강화 시 +4.2%씩 증가)',
+      subEffects: [
+        { desc: '융흔 각인·유적지 할인 상품 첫 구매 시 검은 인장 비용 0 확률 (탐험당 1회)', values: ['70%', '80%', '90%', '100%'] },
+      ],
+      fixedEffects: ['팀 유일 효과'],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SSR',
+    name: '벚꽃 환상',
+    nameEn: 'Illusion of Sakura',
+    exclusive: null,
+    effect: '봄의 편지→만개한 벚꽃→꽃가루 눈→일기일회 순환 카드 덱 추가. 각 사용 시 은열쇠 100~750 획득. 일기일회: 해제된 은열쇠 무작위 1개 즉시 발동 (2회)',
+    detail: {
+      mainStat: '영역 숙달 36 (E4~E15 강화 시 +3씩 증가)',
+      subEffects: [
+        { desc: '봄의 편지 사용 시 은열쇠 획득', values: ['100', '150', '200', '250'] },
+        { desc: '만개한 벚꽃 사용 시 은열쇠 획득', values: ['200', '300', '400', '500'] },
+        { desc: '꽃가루 눈 사용 시 은열쇠 획득', values: ['300', '450', '600', '750'] },
+      ],
+      fixedEffects: [
+        '탐험 시작 시 봄의 편지 1장 덱에 추가 (산출력 1, 보존)',
+        '봄의 편지→만개한 벚꽃→꽃가루 눈→일기일회 순으로 영구 변화',
+        '일기일회: 해제된 은열쇠 중 무작위 1개 즉시 발동 (2회 적용), 이후 봄의 편지로 순환',
+      ],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SSR',
+    name: '별들을 위하여',
+    nameEn: 'For the Star',
+    exclusive: null,
+    effect: '검은 인장 드롭 10.8%. 전투 후 HP 회복 (인장 드롭 1%당 0.15~0.3%). 잿빛 유적 감지 후 재의 유적 새로고침 검은 인장 비용 0',
+    detail: {
+      mainStat: '검은 인장 드롭 10.8% (E4~E15 강화 시 +0.9%씩 증가)',
+      subEffects: [
+        { desc: '전투 후 HP 회복 (검은 인장 드롭 1%당)', values: ['0.15%', '0.2%', '0.25%', '0.3%'] },
+      ],
+      fixedEffects: [
+        '매 턴 종료 시 회복 효과 30% 감소',
+        '잿빛 유적에서 감지 사용 후 다음 재의 유적 새로고침 검은 인장 비용 0',
+      ],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SSR',
+    name: '세상이 향기가 되길',
+    nameEn: '—',
+    exclusive: '사야',
+    effect: '기초 광기 10당 침식 +2~5%, 배아 융합 +0.9~1.5%. 산출력 상한 +1 (동일 유형 중첩 불가)',
+    detail: {
+      mainStat: '검은 인장 드롭 10.8% (E4~E15 강화 시 +0.9%씩 증가)',
+      subEffects: [
+        { desc: '기초 광기 10당 침식 증가', values: ['2%', '3%', '4%', '5%'] },
+        { desc: '기초 광기 10당 배아 융합 증가', values: ['0.9%', '1.1%', '1.3%', '1.5%'] },
+      ],
+      fixedEffects: ['산출력 상한 +1 (동일 유형 중첩 불가)'],
+    },
+    breakthroughEffects: null,
+  },
 
   // ── SR ──
   {
@@ -1586,6 +1691,54 @@ const WHEELS = [
         { desc: '피해량 증가 (공격력 기준)', values: ['6%', '8%', '10%', '12%'] },
       ],
       fixedEffects: ['혈육 시, 광기 폭발로 집어삼키기 발동 시마다 피해량 추가 증가 (공격력의 3%)'],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SR', name: '이성 빛나는 등불', nameEn: 'Light of Intellect', exclusive: null,
+    effect: '매 턴 첫 번째 은열쇠 해제 후 100% 확률로 장착자 공격 카드 1장 드로우',
+    detail: {
+      mainStat: '생존의지 25.2% (E4~E15 강화 시 +2.1%씩 증가) ※ 수치 미확인',
+      subEffects: [],
+      fixedEffects: ['팀 유일 효과', '매 턴 첫 번째 은열쇠 해제 후 100% 확률로 장착자 공격 카드 1장 드로우'],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SR', name: '백합의 미끼', nameEn: 'Otori Lily', exclusive: null,
+    effect: '고정/발동 중독 효과 +4~10%. 매 턴 첫 공명 발동 시 광기 +4~10',
+    detail: {
+      mainStat: '피해 증폭 7.2% (E4~E15 강화 시 +0.6%씩 증가)',
+      subEffects: [
+        { desc: '고정 중독 및 발동 중독 효과 증가', values: ['4%', '6%', '8%', '10%'] },
+        { desc: '매 턴 첫 공명 발동 시 광기 획득', values: ['4', '6', '8', '10'] },
+      ],
+      fixedEffects: ['팀 유일 효과'],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SR', name: '진흙 속의 동화', nameEn: '—', exclusive: null,
+    effect: '핏빛 용광로 사용 후 기초 광기 기준 광기 획득 +4~10% (3턴 쿨다운)',
+    detail: {
+      mainStat: '검은 인장 드롭 5.4% (E4~E15 강화 시 +0.45%씩 증가)',
+      subEffects: [
+        { desc: '핏빛 용광로 사용 후 기초 광기 기준 광기 획득 (3턴 쿨다운)', values: ['4%', '6%', '8%', '10%'] },
+      ],
+      fixedEffects: ['팀 유일 효과'],
+    },
+    breakthroughEffects: null,
+  },
+  {
+    grade: 'SR', name: '진미', nameEn: 'Great Dish', exclusive: null,
+    effect: '기본 피해 +9~15%. 혈육 시, 적 처치 후 핏빛 용광로 축적 (공격력의 8~20%)',
+    detail: {
+      mainStat: '치명타 피해 10.8% (E4~E15 강화 시 +0.9%씩 증가)',
+      subEffects: [
+        { desc: '기본 피해 증가', values: ['9%', '11%', '13%', '15%'] },
+        { desc: '혈육 시, 적 처치 후 핏빛 용광로 축적 (공격력 기준)', values: ['8%', '12%', '16%', '20%'] },
+      ],
+      fixedEffects: [],
     },
     breakthroughEffects: null,
   },
