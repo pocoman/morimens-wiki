@@ -797,7 +797,7 @@ const WHEELS = [
 
   {
     grade: 'SSR',
-    name: '안식의 입맞춤',
+    name: '안식의 키스',
     nameEn: 'Kiss of Repose',
     exclusive: '도어세인',
     effect: '기본 피해 +10~25%. 적 처치 시 크리율 +2% 및 광기 폭발 기본 피해 +2~5% (최대 10중첩). 혈육 시 배아 직접 소모 시 광기 +15~30 (3턴 쿨다운)',
@@ -1127,7 +1127,7 @@ const WHEELS = [
   },
   {
     grade: 'SSR',
-    name: '벚꽃 환상',
+    name: '벚꽃 아래의 미혹',
     nameEn: 'Illusion of Sakura',
     exclusive: null,
     effect: '봄의 편지→만개한 벚꽃→꽃가루 눈→일기일회 순환 카드 덱 추가. 각 사용 시 은열쇠 100~750 획득. 일기일회: 해제된 은열쇠 무작위 1개 즉시 발동 (2회)',
