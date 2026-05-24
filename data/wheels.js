@@ -1148,7 +1148,7 @@ const WHEELS = [
   },
   {
     grade: 'SSR',
-    name: '별들을 위하여',
+    name: '별들에게',
     nameEn: 'For the Star',
     exclusive: null,
     effect: '검은 인장 드롭 10.8%. 전투 후 HP 회복 (인장 드롭 1%당 0.15~0.3%). 잿빛 유적 감지 후 재의 유적 새로고침 검은 인장 비용 0',
