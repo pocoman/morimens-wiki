@@ -52,12 +52,139 @@
   </main>
 
   <footer>
-    마지막 갱신: 2026년 5월 21일
+    마지막 갱신: 2026년 5월 24일
   </footer>
+
+  <div class="panel-overlay" id="panel-overlay"></div>
+  <aside class="detail-panel panel-wide" id="detail-panel">
+    <button class="panel-close" id="panel-close">✕</button>
+    <div id="panel-content"></div>
+  </aside>
+
   <script src="../data/characters.js?v=20260524"></script>
   <script src="../js/main.js?v=20260524"></script>
   <script>
-    const tbody = document.getElementById('char-tbody');
+    const tbody   = document.getElementById('char-tbody');
+    const overlay = document.getElementById('panel-overlay');
+    const panel   = document.getElementById('detail-panel');
+    const content = document.getElementById('panel-content');
+
+    function closePanel() {
+      panel.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+
+    function openPanel(c) {
+      const d = c.detail;
+      const factionLabel = { chaos: '카오스', aequor: '심해', caro: '혈육', ultra: '초차원' }[c.faction];
+      const factionTag = `<span class="tag tag-${c.faction}">${factionLabel}</span>`;
+      const typeKey = { '공격': 'atk', '방어': 'def', '보조': 'sup' }[d.type];
+      const typeTag = `<span class="tag tag-${typeKey}">${d.type}</span>`;
+
+      let html = `
+        <div class="panel-title">${c.name}</div>
+        <div class="panel-title-en">${c.nameEn}</div>
+        <div class="panel-tags">${factionTag}${typeTag}</div>
+        <div class="panel-aliemus">기본 광기 <strong>${d.baseAliemus}</strong></div>
+      `;
+
+      // 레벨 스탯
+      html += `
+        <div class="panel-section">
+          <div class="panel-section-title">레벨 스탯</div>
+          <table class="char-stat-table">
+            <thead><tr><th>Lv</th><th>체질</th><th>공격</th><th>방어</th></tr></thead>
+            <tbody>${d.stats.map(([lv, con, atk, def]) =>
+              `<tr><td class="stat-lv">${lv}</td><td>${con}</td><td>${atk}</td><td>${def}</td></tr>`
+            ).join('')}</tbody>
+          </table>
+        </div>
+      `;
+
+      // 승격
+      const p0 = d.promotion[0];
+      html += `
+        <div class="panel-section">
+          <div class="panel-section-title">승격</div>
+          <table class="promo-table">
+            <thead><tr><th>구간</th><th>${p0.stats[0][0]}</th><th>${p0.stats[1][0]}</th></tr></thead>
+            <tbody>${d.promotion.map(p =>
+              `<tr>
+                <td class="promo-range">Lv.${p.range}</td>
+                <td>${p.stats[0][1]} → ${p.stats[0][2]}</td>
+                <td>${p.stats[1][1]} → ${p.stats[1][2]}</td>
+              </tr>`
+            ).join('')}</tbody>
+          </table>
+        </div>
+      `;
+
+      // 광기 폭발
+      html += `
+        <div class="panel-section">
+          <div class="panel-section-title">광기 폭발</div>
+          <div class="card-item">
+            <div class="card-header"><span class="card-name">${d.exalt.name}</span></div>
+            <div class="card-desc">${d.exalt.desc}</div>
+          </div>
+        </div>
+      `;
+
+      // 카드
+      html += `<div class="panel-section"><div class="panel-section-title">카드</div>`;
+      d.cards.forEach(card => {
+        const tagsHtml = card.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
+        html += `
+          <div class="card-item">
+            <div class="card-header">
+              <span class="card-name">${card.name}</span>
+              <span class="card-cost">산출력 ${card.cost}</span>
+              ${tagsHtml}
+            </div>
+            <div class="card-desc">${card.desc}</div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+
+      // 각성
+      html += `<div class="panel-section"><div class="panel-section-title">각성</div>`;
+      d.enlighten.forEach(e => {
+        html += `
+          <div class="enlighten-row">
+            <span class="enlighten-badge">${e.stage}</span>
+            <div class="enlighten-info">
+              <div class="enlighten-skill-name">${e.name}</div>
+              <div class="enlighten-effect">${e.effect}</div>
+            </div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+
+      // 특성
+      html += `<div class="panel-section"><div class="panel-section-title">특성</div>`;
+      d.traits.forEach(t => {
+        html += `
+          <div class="trait-item">
+            <div class="trait-header">
+              <span class="trait-name">${t.name}</span>
+              ${t.e6 ? '<span class="badge-e6">E6 해제</span>' : ''}
+            </div>
+            <div class="trait-effect">${t.effect}</div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+
+      content.innerHTML = html;
+      panel.classList.add('open');
+      overlay.classList.add('open');
+    }
+
+    document.getElementById('panel-close').addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 
     function toIconFilename(nameEn) {
       return nameEn.toLowerCase().replace(/[:']/g, '').replace(/\s+/g, '-');
@@ -83,6 +210,12 @@
         </td>
         <td>${factionTag}</td>
       `;
+
+      if (c.detail) {
+        tr.classList.add('tr-clickable');
+        tr.addEventListener('click', () => openPanel(c));
+      }
+
       tbody.appendChild(tr);
     });
 
